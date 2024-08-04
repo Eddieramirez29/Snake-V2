@@ -47,7 +47,7 @@ function movement()
 // Function to check for collisions
 function checkCollision()
 {
-    if(posX > 1065 || posX < 283 || posY > 480 || posY < 100) 
+    if(posX > 1065 || posX < 283 || posY > 480 || posY < 100)
     {
         resetTimer(); //Call to reset Timer
         audioCollision.play();
