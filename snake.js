@@ -1,7 +1,7 @@
 const snake = document.getElementById('snake');
 //Initial position for the "snake" superior izquierda
-let posX = 385;
-let posY = 150;
+let posX = 283;
+let posY = 100;
 
 //Initial speed by time
 let speed = 100;
