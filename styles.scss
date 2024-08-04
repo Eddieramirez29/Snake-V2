@@ -1,4 +1,19 @@
-body {
+//Variables for colors
+//Background colors
+$gameBackground: #8da259;
+$snakeColor: #2c311d;
+//border-radius
+$border-radius: 10px;
+$border-radius-items: 20%;
+//sizes for little boxes
+$width: 150px;
+$height: 50px;
+//Sizes for elements
+$width-snake: 10px;
+$height-snake: 10px;
+
+body 
+{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -10,8 +25,8 @@ body {
 #score
 {
     position: absolute;
-    top: 89px;
-    left: 373px;
+    top: 40px;
+    left: 275px;
     background-color: $gameBackground;
     width: $width;
     height: $height;
