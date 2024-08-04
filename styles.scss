@@ -22,6 +22,19 @@ body
     background-color:  rgb(55, 155, 55);
 }
 
+.container
+{
+    position: absolute;
+    left: 940px;
+    top:40px;
+    text-align: center;
+    background-color: $gameBackground;
+    border-radius: $border-radius;
+    width: $width;
+    height: $height;
+    font-weight: bolder;
+}
+
 #score
 {
     position: absolute;
