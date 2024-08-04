@@ -7,6 +7,14 @@ body {
   background-color: rgb(55, 155, 55);
 }
 
+.snake {
+  width: 10px;
+  height: 10px;
+  background-color: #2c311d;
+  border-radius: 20%;
+  position: absolute;
+}
+
 .container {
   position: absolute;
   left: 940px;
