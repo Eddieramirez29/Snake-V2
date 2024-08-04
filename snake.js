@@ -63,11 +63,12 @@ function checkCollision()
 //This funcion restarts to initial position
 function restartPosition()
 {
-    posX = 384;
-    posY = 150;
+    posX = 283;
+    posY = 100;
 
     snake.style.left = posX + 'px';
     snake.style.top = posY + 'px';
+    direction = 'right'; // Reset direction to 'right' after collision
 }
 
 document.addEventListener('keydown', function(event)
