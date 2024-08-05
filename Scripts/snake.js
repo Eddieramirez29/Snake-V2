@@ -118,11 +118,3 @@ function resetTimer()
     clearInterval(timerInterval);
     timerElement.textContent = "00:00:00";
 }
-// Function to check if the snake has eaten the food
-function eatFood() {
-    if (parseInt(snake.style.left) === parseInt(food.style.left) && parseInt(snake.style.top) === parseInt(food.style.top)) {
-        alert("eaten!");
-
-        // Add code to increase the size of the snake or update the score
-    }
-}
