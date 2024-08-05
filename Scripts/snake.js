@@ -1,5 +1,5 @@
 const snake = document.getElementById('snake');
-//Initial position for the "snake" superior izquierda
+//Initial position for the "snake" upper lefy side
 let posX = 283;
 let posY = 100;
 
