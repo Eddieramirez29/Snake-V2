@@ -29,6 +29,9 @@ body {
 
 #score {
   position: absolute;
+  display: flex;
+  align-items: center; /* Centra verticalmente */
+  justify-content: flex-start; /* Alinea el contenido a la izquierda */
   top: 40px;
   left: 275px;
   background-color: #8da259;
