@@ -49,16 +49,14 @@ function checkCollision()
 {
     if(posX > 1065 || posX < 283 || posY > 480 || posY < 100)
     {
-        resetTimer(); //Call to reset Timer
         audioCollision.play();
-        audio.pause();
-        alert("You lost!!!");
         clearInterval(intervalId);
         intervalId = 0;
         restartPosition();
-        direction = 'right'; // Reset direction to 'right' after collision
         resetTimer(); //Call to reset Timer
+        direction = 'right'; // Reset direction to 'right' after collision
         resetScore(); //Call to reset Score
+        audio.pause();
     }
 }
 
