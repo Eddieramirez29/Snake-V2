@@ -118,3 +118,4 @@ function resetTimer()
     clearInterval(timerInterval);
     timerElement.textContent = "00:00:00";
 }
+
