@@ -57,6 +57,8 @@ function checkCollision()
         intervalId = 0;
         restartPosition();
         direction = 'right'; // Reset direction to 'right' after collision
+        resetTimer(); //Call to reset Timer
+        resetScore(); //Call to reset Score
     }
 }
 
@@ -83,6 +85,7 @@ document.addEventListener('keydown', function(event)
         {
             intervalId = setInterval(movement, speed);
         }
+        resetScore(); //Call to reset Score
 
     }
     //Restart to initial position
@@ -93,6 +96,7 @@ document.addEventListener('keydown', function(event)
                 intervalId = 0
                 restartPosition();
                 audio.pause();
+                resetScore(); //Call to reset Score
             }
     else if (event.key === 'ArrowRight') 
             {

@@ -3,6 +3,14 @@ let newParagraph = document.createElement('p');
 
 let points = 0;
 
+//Function for reseting score
+
+function resetScore()
+{
+    score.innerHTML =  "Score: 0";
+    points = 0;
+}
+
 // Function to check if the snake has eaten the food
 function eatFood()
 {
