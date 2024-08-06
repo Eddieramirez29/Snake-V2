@@ -56,7 +56,7 @@ function checkCollision()
         resetTimer(); //Call to reset Timer
         direction = 'right'; // Reset direction to 'right' after collision
         resetScore(); //Call to reset Score
-        audio.pause();
+        backgroundAudio.pause();
     }
 }
 
@@ -93,7 +93,7 @@ document.addEventListener('keydown', function(event)
                 resetTimer(); //Call to reset Timer
                 intervalId = 0
                 restartPosition();
-                audio.pause();
+                backgroundAudio.pause();
                 resetScore(); //Call to reset Score
             }
     else if (event.key === 'ArrowRight') 
