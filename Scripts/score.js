@@ -22,7 +22,7 @@ function eatFood()
         score.innerHTML = newParagraph.innerHTML + points;
         positionArrayX = getRandomPositionX(minX, maxX);
         positionArrayY = getRandomPositionY(minY, maxY);
-
+        createTail();
         food.style.left = X[positionArrayX] + 'px';
         food.style.top = Y[positionArrayY] + 'px';
     }

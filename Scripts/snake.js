@@ -38,7 +38,7 @@ function movement()
 
     snake.style.left = posX + 'px';
     snake.style.top = posY + 'px';
-
+    
     checkCollision();
     eatFood();
 }
