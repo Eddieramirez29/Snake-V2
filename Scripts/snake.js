@@ -11,6 +11,7 @@ let speed2 = 5;
 let tailPosX = 0;
 let tailPosY = 0;
 
+let a = 0;
 
 snake.style.left = posX + 'px';
 snake.style.top = posY + 'px';
@@ -49,9 +50,13 @@ function movement()
 
     snake.style.left = posX  + 'px';
     snake.style.top = posY + 'px';
-     // Establecer la posición del tailSnake
-     tailSnake.style.left = (posX + tailPosX ) + 'px';
-     tailSnake.style.top = (posY + tailPosY) + 'px';
+    
+    for(let i = 1; i <=a; i++)
+    {
+        // Establecer la posición del tailSnake
+     tailSnake.style.left = (posX + a*tailPosX ) + 'px';
+     tailSnake.style.top = (posY + a*tailPosY) + 'px';
+    }
     
     checkCollision();
     eatFood();
@@ -63,6 +68,8 @@ function checkCollision()
 {
     if(posX > 1065 || posX < 283 || posY > 480 || posY < 100)
     {
+        a = 0;
+        tailSnake.remove(); //Delete tail element
         audioCollision.play();
         clearInterval(intervalId);
         intervalId = 0;
@@ -106,6 +113,7 @@ document.addEventListener('keydown', function(event)
                 clearInterval(intervalId);//Stop snake
                 resetTimer(); //Call to reset Timer
                 intervalId = 0
+                a = 0;
                 restartPosition();
                 backgroundAudio.pause();
                 resetScore(); //Call to reset Score
