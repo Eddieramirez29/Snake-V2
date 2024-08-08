@@ -3,7 +3,7 @@ const tailSnake = document.createElement('div');
 
 const widthSnake = '20px';
 const heightSnake = '20px';
-const snakeColor = '#2c451d';
+const snakeColor = '#095594';
 const borderRadiusItems = '20%';
 
 
