@@ -8,6 +8,9 @@ let speed = 100;
 //Initial speed by space
 let speed2 = 5;
 
+let tailPosX = 0;
+let tailPosY = 0;
+
 
 snake.style.left = posX + 'px';
 snake.style.top = posY + 'px';
@@ -24,20 +27,31 @@ function movement()
     {
         case 'right':
             posX += speed2;
+            tailPosX = -20;
+            tailPosY = 0;
             break;
         case 'left':
             posX -= speed2;
+            tailPosX = 20;
+            tailPosY = 0;
             break;
         case 'up':
             posY -= speed2;
+            tailPosX = 0;
+            tailPosY = 20;
             break;
         case 'down':
             posY += speed2;
+            tailPosX = 0;
+            tailPosY = -20;
             break;
     }
 
-    snake.style.left = posX + 'px';
+    snake.style.left = posX  + 'px';
     snake.style.top = posY + 'px';
+     // Establecer la posición del tailSnake
+     tailSnake.style.left = (posX + tailPosX ) + 'px';
+     tailSnake.style.top = (posY + tailPosY) + 'px';
     
     checkCollision();
     eatFood();
