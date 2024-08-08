@@ -54,8 +54,8 @@ function movement()
     for(let i = 1; i <=a; i++)
     {
         // Establecer la posición del tailSnake
-     tailSnake.style.left = (posX + a*tailPosX ) + 'px';
-     tailSnake.style.top = (posY + a*tailPosY) + 'px';
+        tailSnake.style.left = (posX + a*tailPosX ) + 'px';
+        tailSnake.style.top = (posY + a*tailPosY) + 'px';
     }
     
     checkCollision();
