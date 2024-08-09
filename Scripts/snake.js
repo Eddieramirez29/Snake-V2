@@ -22,64 +22,69 @@ let direction = 'right';
 
 let intervalId = 0
 //This funcion simulates movement of the sanek
-function movement()
-{
-    switch(direction) 
-    {
+function movement() {
+    // Guardar la posición actual de la cabeza de la serpiente
+    let prevX = posX;
+    let prevY = posY;
+
+    switch (direction) {
         case 'right':
             posX += speed2;
-            tailPosX = -20;
-            tailPosY = 0;
             break;
         case 'left':
             posX -= speed2;
-            tailPosX = 20;
-            tailPosY = 0;
             break;
         case 'up':
             posY -= speed2;
-            tailPosX = 0;
-            tailPosY = 20;
             break;
         case 'down':
             posY += speed2;
-            tailPosX = 0;
-            tailPosY = -20;
             break;
     }
 
-    snake.style.left = posX  + 'px';
+    // Actualizar la posición de la cabeza de la serpiente
+    snake.style.left = posX + 'px';
     snake.style.top = posY + 'px';
-    
-    for(let i = 1; i <=a; i++)
+
+    // Actualizar la posición de la cola
+    for (let i = tail.length - 1; i > 0; i--) 
     {
-        // Establecer la posición del tailSnake
-        tailSnake.style.left = (posX + a*tailPosX ) + 'px';
-        tailSnake.style.top = (posY + a*tailPosY) + 'px';
+        tail[i].style.left = tail[i - 1].style.left;
+        tail[i].style.top  = tail[i - 1].style.top;
     }
-    
+
+    if (tail.length > 0)
+    {
+        tail[0].style.left = prevX + 'px';
+        tail[0].style.top = prevY + 'px';
+    }
+
     checkCollision();
     eatFood();
 }
 
 
+
 // Function to check for collisions
-function checkCollision()
-{
-    if(posX > 1065 || posX < 283 || posY > 480 || posY < 100)
-    {
+function checkCollision() {
+    if (posX > 1065 || posX < 283 || posY > 480 || posY < 100) {
         a = 0;
-        tailSnake.remove(); //Delete tail element
+
+        // Eliminar todos los segmentos de la cola
+        tail.forEach(segment => segment.remove());
+        tail = []; // Vaciar el arreglo de la cola
+
         audioCollision.play();
         clearInterval(intervalId);
         intervalId = 0;
         restartPosition();
-        resetTimer(); //Call to reset Timer
-        direction = 'right'; // Reset direction to 'right' after collision
-        resetScore(); //Call to reset Score
+        resetTimer(); // Llamada para reiniciar el temporizador
+        direction = 'right'; // Restablecer la dirección a 'right' después de la colisión
+        resetScore(); // Llamada para reiniciar el puntaje
         backgroundAudio.pause();
     }
 }
+
 
 //This funcion restarts to initial position
 function restartPosition()
