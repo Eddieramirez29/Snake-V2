@@ -4,9 +4,9 @@ let posX = 283;
 let posY = 100;
 
 //Initial speed by time
-let speed = 100;
+let speed = 400;
 //Initial speed by space
-let speed2 = 5;
+let speed2 = 20;
 
 let tailPosX = 0;
 let tailPosY = 0;
