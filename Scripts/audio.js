@@ -1,5 +1,5 @@
 // Crear un objeto Audio para cada sonido
-const backgroundAudio = new Audio('./Sounds/main.wav');
+const backgroundAudio = new Audio('./Sounds/Forest_Ambience.mp3');
 const audioCollision = new Audio("./Sounds/Collision.wav");
 const eatFoodAudio = new Audio("../Sounds/EatFood.mp3")
 
