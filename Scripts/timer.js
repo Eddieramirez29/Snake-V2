@@ -1,7 +1,7 @@
 let timerElement = document.getElementById('timer');
 let startTime = Date.now();
 
-function formatTime(ms) 
+function formatTime(ms)
 {
   let totalSeconds = Math.floor(ms / 1000);
   let hours = Math.floor(totalSeconds / 3600);
@@ -25,14 +25,4 @@ function startTimer()
     timerInterval = setInterval(updateTimer, 1000);
   }
 
-document.addEventListener('keydown', function(event) 
-{
-    
-    //When clicking "Enter" key, the game will start
-    if (event.key === 'Enter') 
-    { 
-        startTimer();
-    }
-   
-});
 

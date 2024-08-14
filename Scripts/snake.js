@@ -57,7 +57,7 @@ function movement() {
         tail[0].style.top = prevY + 'px';
     }
 
-    checkCollision();
+    checkWallsCollision();
     checkSelfCollision();
     eatFood();
 }
@@ -69,7 +69,7 @@ function checkSelfCollision()
         if (posX === parseInt(tail[i].style.left) && posY === parseInt(tail[i].style.top))
         {
             clearInterval(intervalId); // Detener el movimiento de la serpiente
-            alert('¡Colisión con la cola! Juego terminado.');
+            alert('¡Game Over!');
             break;
         }
     }
@@ -78,8 +78,9 @@ function checkSelfCollision()
 
 
 // Function to check for collisions
-function checkCollision() {
-    if (posX > 1065 || posX < 283 || posY > 480 || posY < 100) 
+function checkWallsCollision() 
+{
+    if (posX > 1065 || posX < 283 || posY > 480 || posY < 100)
     {
         audioCollision.play();
         clearInterval(intervalId);//Stop snake
@@ -115,11 +116,14 @@ document.addEventListener('keydown', function(event)
     if (event.key === 'Enter')
     {
         // Prevent multiple intervals
-        if (intervalId === 0) 
+        if (intervalId === 0)
         {
             intervalId = setInterval(movement, speed);
+            resetScore(); //Call to reset Score
+            startTimer();
+            initialRandomPositionWhenStarting();
         }
-        resetScore(); //Call to reset Score
+        
 
     }
     //Restart to initial position

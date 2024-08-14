@@ -32,19 +32,12 @@ let positionArrayY = getRandomPositionY(minY, maxY);
 food.style.left = X[positionArrayX] + 'px';
 food.style.top  = Y[positionArrayY] + 'px';
 
-
-document.addEventListener('keydown', function(event)
+function initialRandomPositionWhenStarting()
 {
-    
-    //When clicking "Enter" key, the game will start
-    if (event.key === 'Enter') 
-    {
-        positionArrayX = getRandomPositionX(minX, maxX);
-        positionArrayY = getRandomPositionY(minY, maxY);
+    positionArrayX = getRandomPositionX(minX, maxX);
+    positionArrayY = getRandomPositionY(minY, maxY);
 
-        food.style.left = X[positionArrayX] + 'px';
-        food.style.top = Y[positionArrayY] + 'px';
-    }
-});
-
+    food.style.left = X[positionArrayX] + 'px';
+    food.style.top = Y[positionArrayY] + 'px';
+}
 
