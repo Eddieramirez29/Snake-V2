@@ -62,38 +62,42 @@ function movement() {
     eatFood();
 }
 
+function resetValuesWhenCollisioning()
+{
+    clearInterval(intervalId); // Detener el movimiento de la serpiente
+    audioCollision.play();
+    clearInterval(intervalId);//Stop snake
+    resetTimer(); //Call to reset Timer
+    intervalId = 0
+    restartPosition();
+    direction = 'right'; // Restablecer la dirección a 'right' después de la colisión
+    resetScore(); // Llamada para reiniciar el puntaje
+    backgroundAudio.pause();
+    // Eliminar todos los segmentos de la cola
+    tail.forEach(segment => segment.remove());
+    tail = []; // Vaciar el arreglo de la cola
+    clearInterval(intervalId);//Stop snake
+    alert('¡Game Over!');
+}
+
 function checkSelfCollision()
 {
     for (let i = 0; i < tail.length; i++)
     {
         if (posX === parseInt(tail[i].style.left) && posY === parseInt(tail[i].style.top))
         {
-            clearInterval(intervalId); // Detener el movimiento de la serpiente
-            alert('¡Game Over!');
+            resetValuesWhenCollisioning();
             break;
         }
     }
 }
 
-
-
 // Function to check for collisions
-function checkWallsCollision() 
+function checkWallsCollision()
 {
     if (posX > 1065 || posX < 283 || posY > 480 || posY < 100)
     {
-        audioCollision.play();
-        clearInterval(intervalId);//Stop snake
-        resetTimer(); //Call to reset Timer
-        intervalId = 0
-        restartPosition();
-        direction = 'right'; // Restablecer la dirección a 'right' después de la colisión
-        resetScore(); // Llamada para reiniciar el puntaje
-        backgroundAudio.pause();
-        // Eliminar todos los segmentos de la cola
-        tail.forEach(segment => segment.remove());
-        tail = []; // Vaciar el arreglo de la cola
-        clearInterval(intervalId);//Stop snake
+        resetValuesWhenCollisioning();
     }
 }
 
@@ -123,35 +127,27 @@ document.addEventListener('keydown', function(event)
             startTimer();
             initialRandomPositionWhenStarting();
         }
-        
-
     }
-    //Restart to initial position
-    else if (event.key === 'r' || event.key === 'R') 
-            {
-                clearInterval(intervalId);//Stop snake
-                resetTimer(); //Call to reset Timer
-                intervalId = 0
-                restartPosition();
-                backgroundAudio.pause();
-                resetScore(); //Call to reset Score
-            }
-    else if (event.key === 'ArrowRight') 
-            {
-                direction = 'right';
-            } 
-    else if (event.key === 'ArrowLeft') 
-            {
-                direction = 'left';
-            } 
-    else if (event.key === 'ArrowUp') 
-            {
-                direction = 'up';
-            } 
-    else if (event.key === 'ArrowDown') 
-            {
-                direction = 'down';
-            }
+    else
+        if (event.key === 'ArrowRight') 
+        {
+            direction = 'right';
+        }
+    else
+        if (event.key === 'ArrowLeft') 
+        {
+            direction = 'left';
+        }
+    else
+        if (event.key === 'ArrowUp') 
+        {
+            direction = 'up';
+        }
+    else
+        if (event.key === 'ArrowDown') 
+        {
+            direction = 'down';
+        }
 });
 
 // Function to trigger the timer reset event

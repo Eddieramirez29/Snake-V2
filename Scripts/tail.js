@@ -1,13 +1,14 @@
 let tail = []; // Arreglo para almacenar los segmentos de la cola
 
-function createTail() {
+function createTail()
+{
     // Crear un nuevo div para el segmento de la cola
     let tailSnake = document.createElement('div');
 
     // Propiedades CSS
     const widthSnake = '20px';
     const heightSnake = '20px';
-    const snakeColor = '#095594';
+    const snakeColor = '#2c311d';
     const borderRadiusItems = '20%';
 
     // Asignar las propiedades CSS
