@@ -11,8 +11,6 @@ let speed2 = 20;
 let tailPosX = 0;
 let tailPosY = 0;
 
-let a = 0;
-
 snake.style.left = posX + 'px';
 snake.style.top = posY + 'px';
 
@@ -60,28 +58,41 @@ function movement() {
     }
 
     checkCollision();
+    checkSelfCollision();
     eatFood();
+}
+
+function checkSelfCollision()
+{
+    for (let i = 0; i < tail.length; i++)
+    {
+        if (posX === parseInt(tail[i].style.left) && posY === parseInt(tail[i].style.top))
+        {
+            clearInterval(intervalId); // Detener el movimiento de la serpiente
+            alert('¡Colisión con la cola! Juego terminado.');
+            break;
+        }
+    }
 }
 
 
 
 // Function to check for collisions
 function checkCollision() {
-    if (posX > 1065 || posX < 283 || posY > 480 || posY < 100) {
-        a = 0;
-
-        // Eliminar todos los segmentos de la cola
-        tail.forEach(segment => segment.remove());
-        tail = []; // Vaciar el arreglo de la cola
-
+    if (posX > 1065 || posX < 283 || posY > 480 || posY < 100) 
+    {
         audioCollision.play();
-        clearInterval(intervalId);
-        intervalId = 0;
+        clearInterval(intervalId);//Stop snake
+        resetTimer(); //Call to reset Timer
+        intervalId = 0
         restartPosition();
-        resetTimer(); // Llamada para reiniciar el temporizador
         direction = 'right'; // Restablecer la dirección a 'right' después de la colisión
         resetScore(); // Llamada para reiniciar el puntaje
         backgroundAudio.pause();
+        // Eliminar todos los segmentos de la cola
+        tail.forEach(segment => segment.remove());
+        tail = []; // Vaciar el arreglo de la cola
+        clearInterval(intervalId);//Stop snake
     }
 }
 
@@ -103,7 +114,6 @@ document.addEventListener('keydown', function(event)
     //When clicking "Enter" key, the game will start
     if (event.key === 'Enter')
     {
-        //delay 5 ms
         // Prevent multiple intervals
         if (intervalId === 0) 
         {
@@ -118,7 +128,6 @@ document.addEventListener('keydown', function(event)
                 clearInterval(intervalId);//Stop snake
                 resetTimer(); //Call to reset Timer
                 intervalId = 0
-                a = 0;
                 restartPosition();
                 backgroundAudio.pause();
                 resetScore(); //Call to reset Score

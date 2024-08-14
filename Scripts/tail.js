@@ -17,10 +17,8 @@ function createTail() {
     tailSnake.style.borderRadius = borderRadiusItems;
     tailSnake.style.position = 'absolute';
     tailSnake.classList.add('snake');
-
-    // Añadir el nuevo segmento a la cola
+    
     document.body.appendChild(tailSnake);
-
     // Añadir el segmento a la lista de la cola
     tail.push(tailSnake);
 }
