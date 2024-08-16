@@ -60,15 +60,28 @@ function movement() {
     checkWallsCollision();
     checkSelfCollision();
     eatFood();
+    // Stopping the current interval and creating a 
+    // new one with the updated speed ensures that 
+    //there are no multiple intervals active at the same time.
+    if(points%5 === 0 && points >= 5)
+    {
+        speed = speed - 100;
+        points++;
+        score.innerHTML = newParagraph.innerHTML + points;
+        clearInterval(intervalId); // Detener el movimiento de la serpiente
+        intervalId = 0;
+        intervalId = setInterval(movement, speed)
+    }
 }
 
 function resetValuesWhenCollisioning()
 {
+    speed = 400;
     clearInterval(intervalId); // Detener el movimiento de la serpiente
     audioCollision.play();
     clearInterval(intervalId);//Stop snake
     resetTimer(); //Call to reset Timer
-    intervalId = 0
+    intervalId = 0;
     restartPosition();
     direction = 'right'; // Restablecer la dirección a 'right' después de la colisión
     resetScore(); // Llamada para reiniciar el puntaje
@@ -113,6 +126,7 @@ function restartPosition()
     direction = 'right'; // Reset direction to 'right' after collision
 }
 
+
 document.addEventListener('keydown', function(event)
 {
     
@@ -156,4 +170,3 @@ function resetTimer()
     clearInterval(timerInterval);
     timerElement.textContent = "00:00:00";
 }
-
