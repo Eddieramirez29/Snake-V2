@@ -1,1 +1,1 @@
-![Snake Game Preview](snake2/Snake.png)
+![Snake Game Preview](snake2/Snake2.png)
