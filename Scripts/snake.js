@@ -20,12 +20,20 @@ let direction = 'right';
 
 let intervalId = 0
 //This funcion simulates movement of the sanek
-function movement() {
-    // Guardar la posición actual de la cabeza de la serpiente
-    let prevX = posX;
-    let prevY = posY;
+function movement()
+{
+    setDirectionAndPositionHead();
+    checkWallsCollision();
+    checkSelfCollision();
+    eatFood();
+    showTail();
+    increaseSpeed();
+}
 
-    switch (direction) {
+function setDirectionAndPositionHead()
+{
+    switch (direction) 
+    {
         case 'right':
             posX += speed2;
             break;
@@ -40,38 +48,44 @@ function movement() {
             break;
     }
 
-    // Actualizar la posición de la cabeza de la serpiente
+    // Update head position
     snake.style.left = posX + 'px';
     snake.style.top = posY + 'px';
+}
 
-    // Actualizar la posición de la cola
+function showTail()
+{
+    // Save head position
+    let prevX = posX;
+    let prevY = posY;
+    // Update current tail position
     for (let i = tail.length - 1; i > 0; i--) 
-    {
-        tail[i].style.left = tail[i - 1].style.left;
-        tail[i].style.top  = tail[i - 1].style.top;
-    }
+        {
+            tail[i].style.left = tail[i - 1].style.left;
+            tail[i].style.top  = tail[i - 1].style.top;
+        }
+    
+        if (tail.length > 0)
+        {
+            tail[0].style.left = prevX + 'px';
+            tail[0].style.top = prevY + 'px';
+        }
+}
 
-    if (tail.length > 0)
-    {
-        tail[0].style.left = prevX + 'px';
-        tail[0].style.top = prevY + 'px';
-    }
-
-    checkWallsCollision();
-    checkSelfCollision();
-    eatFood();
+function increaseSpeed()
+{
     // Stopping the current interval and creating a 
     // new one with the updated speed ensures that 
     //there are no multiple intervals active at the same time.
     if(points%5 === 0 && points >= 5)
-    {
-        speed = speed - 100;
-        points++;
-        score.innerHTML = newParagraph.innerHTML + points;
-        clearInterval(intervalId); // Detener el movimiento de la serpiente
-        intervalId = 0;
-        intervalId = setInterval(movement, speed)
-    }
+        {
+            speed = speed - 100;
+            points++;
+            score.innerHTML = newParagraph.innerHTML + points;
+            clearInterval(intervalId);
+            intervalId = 0;
+            intervalId = setInterval(movement, speed)
+        }
 }
 
 function resetValuesWhenCollisioning()
